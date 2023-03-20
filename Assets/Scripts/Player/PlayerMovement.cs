@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,7 +6,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector2 _moveDelta;
     private PlayerInput _playerInput;
-    
+
+    public Vector2 MoveDelta => _moveDelta;
+    public bool IsPlayerMoving => _moveDelta.magnitude > 0f;
+
     private void OnEnable()
     {
         _playerInput.PlayerWalk.Enable();

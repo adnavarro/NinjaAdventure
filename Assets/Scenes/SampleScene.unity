@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 53168317}
   - component: {fileID: 53168316}
   - component: {fileID: 53168312}
+  - component: {fileID: 53168318}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873e220447ca98a429549e49598a2d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 3
 --- !u!212 &53168313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -291,6 +293,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &53168318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53168311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2e8ad70a8c84b439423f4711032da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerIdle: Layer_Player_Idle
+  layerWalking: Layer_Player_Walking
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
