@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealth : BaseHealth
 {
     public bool IsAbleToHeal => Health < maxHealth;
+    public static Action PlayerDefeatedEvent;
 
     private void Update()
     {
@@ -35,5 +37,10 @@ public class PlayerHealth : BaseHealth
     protected override void UpdateHealthBar(float currentHealth, float maxHealth)
     {
         base.UpdateHealthBar(currentHealth, maxHealth);
+    }
+
+    protected override void PlayerDefeated()
+    {
+        PlayerDefeatedEvent?.Invoke();
     }
 }

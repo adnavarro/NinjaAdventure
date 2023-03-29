@@ -20,6 +20,7 @@ public class BaseHealth : MonoBehaviour
             UpdateHealthBar(Health, maxHealth);
             if (Health <= 0)
             {
+                Health = 0;
                 PlayerDefeated();
             }
         }

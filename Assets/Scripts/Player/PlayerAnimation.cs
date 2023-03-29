@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -10,6 +8,17 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private string layerWalking;
     private readonly int _directionX = Animator.StringToHash("X");
     private readonly int _directionY = Animator.StringToHash("Y");
+    private readonly int _isPlayerDefeated = Animator.StringToHash("IsPlayerDefeated");
+
+    private void OnEnable()
+    {
+        PlayerHealth.PlayerDefeatedEvent += DefeatedAnimation;
+    }
+
+    private void OnDisable()
+    {
+        PlayerHealth.PlayerDefeatedEvent -= DefeatedAnimation;
+    }
 
     private void Awake()
     {
@@ -32,6 +41,14 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    private void DefeatedAnimation()
+    {
+        if (IsLayerActive(layerIdle))
+        {
+            _animator.SetBool(_isPlayerDefeated, true);
+        }
+    }
+
     private void ActivateLayer(string layerName)
     {
         for (int i = 0; i < _animator.layerCount; i++)
@@ -41,6 +58,16 @@ public class PlayerAnimation : MonoBehaviour
 
         int layerToActivate = _animator.GetLayerIndex(layerName);
         _animator.SetLayerWeight(layerToActivate, 1);
+    }
+
+    private bool IsLayerActive(string layerName)
+    {
+        int layerToCheck = _animator.GetLayerIndex(layerName);
+        if (_animator.GetLayerWeight(layerToCheck) == 0)
+        {
+            return false; 
+        }
+        return true;
     }
 
     private void UpdateLayer()
