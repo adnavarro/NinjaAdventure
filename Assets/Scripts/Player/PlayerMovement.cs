@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    
     void FixedUpdate()
     {
         CalculateMovement();
