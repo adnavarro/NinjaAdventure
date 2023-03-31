@@ -28,7 +28,12 @@ public class PlayerHealth : BaseHealth
     }
 
     public void RestoreHealth(float quantityToRestore)
-    { 
+    {
+        if (IsPlayerDefeated)
+        { 
+            return;
+        }
+
         if (IsAbleToHeal)
         {
             if (Health + quantityToRestore > maxHealth)
