@@ -7,7 +7,7 @@ public class BaseHealth : MonoBehaviour
 
     public float Health { get; protected set; }
 
-    private void Start()
+    protected virtual void Start()
     {
         Health = initialHealth;
     }
@@ -17,12 +17,12 @@ public class BaseHealth : MonoBehaviour
         if (damageQuantity > 0)
         {
             Health -= damageQuantity;
-            UpdateHealthBar(Health, maxHealth);
             if (Health <= 0)
             {
                 Health = 0;
                 PlayerDefeated();
             }
+            UpdateHealthBar(Health, maxHealth);
         }
         return;
     }

@@ -49,6 +49,12 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    public void RestorePlayerAnimation()
+    {
+        ActivateLayer(layerIdle);
+        _animator.SetBool(_isPlayerDefeated, false);
+    }
+
     private void ActivateLayer(string layerName)
     {
         for (int i = 0; i < _animator.layerCount; i++)
